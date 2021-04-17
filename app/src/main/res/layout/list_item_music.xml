@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.github.ainul.musica.model.AudioModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/medium_margin"
+        android:paddingTop="@dimen/margin"
+        android:paddingEnd="@dimen/medium_margin"
+        android:paddingBottom="@dimen/margin"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
+        tools:background="@color/secondaryColor">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/coverContainer"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@id/cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_disc_24"
+                android:background="@color/secondaryColor"
+                tools:ignore="contentDescription" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:ellipsize="end"
+            android:gravity="center|start"
+            android:maxLines="1"
+            android:text="@{data.name}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/coverContainer"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/sample_music_title" />
+
+        <TextView
+            android:id="@+id/album"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{data.artist}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="@string/sample_album" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

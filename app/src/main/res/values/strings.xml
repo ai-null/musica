@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Musica</string>
+    <string name="punchline">Play music in your device.</string>
+    <string name="search_placeholder">Search music</string>
+
+    <!--  Strings  -->
+    <string name="recent">Recent playlist</string>
+    <string name="your_musics">Your musics</string>
+
+    <!--  Dummies  -->
+    <string name="sample_music_title">03. 星と鳥が瞬く空 my darling my love</string>
+    <string name="sample_album">Phantasm Festa</string>
+</resources>
