@@ -10,4 +10,6 @@
     <!--  Dummies  -->
     <string name="sample_music_title">03. 星と鳥が瞬く空 my darling my love</string>
     <string name="sample_album">Phantasm Festa</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

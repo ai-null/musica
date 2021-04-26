@@ -73,7 +73,7 @@ class MainViewModel(private val context: Context) : ViewModel() {
                 return MainViewModel(context) as T
             }
 
-            throw ClassCastException("Assigned class is not supported")
+            throw ClassCastException("Unable to construct viewmodel")
         }
     }
 }
