@@ -5,23 +5,43 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="50"
-        motion:motionInterpolator="linear">
+        motion:duration="100"
+        motion:motionInterpolator="easeOut">
         <OnSwipe
             motion:dragThreshold="50"
-            motion:maxAcceleration="80"
+            motion:maxAcceleration="25"
             motion:onTouchUp="autoComplete"
-            motion:touchRegionId="@+id/player" />
-        <KeyFrameSet />
+            motion:touchAnchorId="@id/largePlayer"
+            motion:touchRegionId="@+id/largePlayer" />
+        <KeyFrameSet>
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="42"
+                motion:motionTarget="@+id/smallPlayer" />
+            <KeyAttribute
+                android:alpha="1"
+                motion:framePosition="42"
+                motion:motionTarget="@+id/largePlayer" />
+        </KeyFrameSet>
     </Transition>
 
     <ConstraintSet android:id="@+id/start" />
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/player"
+            android:id="@+id/largePlayer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/smallPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="invisible"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
