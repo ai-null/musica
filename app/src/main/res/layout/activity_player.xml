@@ -83,5 +83,74 @@
             app:layout_constraintEnd_toEndOf="@id/title"
             app:layout_constraintStart_toStartOf="@id/title"
             app:layout_constraintTop_toBottomOf="@id/title" />
+
+        <SeekBar
+            android:id="@+id/playerSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:thumbTint="@color/primaryColor"
+            android:progressTint="@color/primaryColor"
+            app:layout_constraintTop_toBottomOf="@id/album" />
+
+        <LinearLayout
+            android:id="@+id/actionContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/medium_margin"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/playerSeekBar"
+            app:layout_constraintVertical_bias="0">
+
+            <ImageButton
+                android:id="@+id/shuffle"
+                style="@style/actionButton"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:layout_marginRight="@dimen/medium_margin"
+                android:src="@drawable/ic_baseline_shuffle_24"
+                tools:ignore="ContentDescription" />
+
+            <ImageButton
+                android:id="@+id/skipPrevious"
+                style="@style/actionButton"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:layout_marginRight="@dimen/medium_margin"
+                android:src="@drawable/ic_baseline_skip_previous_24"
+                tools:ignore="ContentDescription" />
+
+            <ImageButton
+                android:id="@+id/play"
+                style="@style/actionButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:padding="@dimen/medium_margin"
+                android:src="@drawable/ic_baseline_play_arrow_24"
+                android:tint="@android:color/white"
+                app:backgroundTint="@color/primaryColor"
+                tools:ignore="ContentDescription" />
+
+            <ImageButton
+                android:id="@+id/skipNext"
+                style="@style/actionButton"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:src="@drawable/ic_baseline_skip_next_24"
+                tools:ignore="ContentDescription" />
+
+            <ImageButton
+                android:id="@+id/repeat"
+                style="@style/actionButton"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:src="@drawable/ic_baseline_repeat_24"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

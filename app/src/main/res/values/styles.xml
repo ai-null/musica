@@ -11,4 +11,12 @@
         </item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="actionButton">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:padding">@dimen/margin</item>
+        <item name="android:background">@drawable/rounded_ripple_background</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
 </resources>
