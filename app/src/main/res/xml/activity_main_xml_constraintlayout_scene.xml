@@ -8,11 +8,9 @@
         motion:duration="100"
         motion:motionInterpolator="easeOut">
         <OnSwipe
-            motion:dragThreshold="50"
             motion:maxAcceleration="25"
-            motion:onTouchUp="autoComplete"
-            motion:touchAnchorId="@id/largePlayer"
-            motion:touchRegionId="@+id/largePlayer" />
+            motion:dragScale="0.2"
+            motion:touchRegionId="@id/largePlayer" />
         <KeyFrameSet>
             <KeyAttribute
                 android:alpha="0"
