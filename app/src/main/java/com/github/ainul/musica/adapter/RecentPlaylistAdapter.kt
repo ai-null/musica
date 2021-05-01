@@ -5,13 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.github.ainul.musica.databinding.GridItemMusicBinding
+import com.github.ainul.musica.model.AudioModel
 
 class RecentPlaylistAdapter(
     private val context: Context,
     private val ClickListener: ClickListener
 ) :
     RecyclerView.Adapter<RecentPlaylistAdapter.ViewHolder>() {
-    var data: List<Int> = listOf()
+    var data: List<AudioModel> = listOf()
         set(value) {
             notifyDataSetChanged()
             field = value
@@ -32,9 +33,10 @@ class RecentPlaylistAdapter(
         private val binding: GridItemMusicBinding,
         private val clickListener: ClickListener
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Int) {
+        fun bind(data: AudioModel) {
+            binding.model = data
             binding.coverContainer.setOnClickListener {
-                clickListener.onClick()
+                clickListener.onClick(data)
             }
         }
 

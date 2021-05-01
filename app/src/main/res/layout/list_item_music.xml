@@ -38,6 +38,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_disc_24"
+                albumArt="@{data.path}"
                 android:background="@color/secondaryColor"
                 tools:ignore="contentDescription" />
         </androidx.cardview.widget.CardView>

@@ -84,7 +84,7 @@
             app:layout_constraintStart_toStartOf="@id/title"
             app:layout_constraintTop_toBottomOf="@id/title" />
 
-        <SeekBar
+        <androidx.appcompat.widget.AppCompatSeekBar
             android:id="@+id/playerSeekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

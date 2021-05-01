@@ -1,5 +1,7 @@
 package com.github.ainul.musica.adapter
 
+import com.github.ainul.musica.model.AudioModel
+
 interface ClickListener {
-    fun onClick()
+    fun onClick(data: AudioModel)
 }
