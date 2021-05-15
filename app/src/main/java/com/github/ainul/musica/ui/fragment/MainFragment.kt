@@ -16,9 +16,7 @@ import com.github.ainul.musica.ui.viewmodel.MainViewModel
 class MainFragment : Fragment(), ClickListener {
 
     private lateinit var binding: FragmentMainBinding
-    private val model: MainViewModel by activityViewModels {
-        MainViewModel.Factory(requireActivity().application)
-    }
+    private val model: MainViewModel by activityViewModels()
 
     private lateinit var musicAdapter: MusicListAdapter
     private lateinit var recentAdapter: RecentPlaylistAdapter

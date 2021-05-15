@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.github.ainul.musica.R
 
 /**
  * Use to set album art of the song to the [ImageView]
@@ -13,7 +14,7 @@ import com.bumptech.glide.Glide
  *  path of the audio files
  */
 @BindingAdapter("albumArt")
-fun ImageView.albumArt(path: String) {
+fun ImageView.albumArt(path: String?) {
     val retriever = MediaMetadataRetriever()
 
     // get the meta data from music's path
@@ -28,8 +29,9 @@ fun ImageView.albumArt(path: String) {
     val art: ByteArray? = retriever.embeddedPicture
     retriever.release()
 
-    // set image if there's one otherwise ignore
-    art?.let {
-        Glide.with(this).asBitmap().load(it).into(this)
+    if (art !== null) {
+        Glide.with(this).asBitmap().load(art).into(this)
+    } else {
+        Glide.with(this).load(R.drawable.ic_disc).into(this)
     }
 }

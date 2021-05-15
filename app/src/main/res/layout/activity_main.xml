@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.github.ainul.musica.ui.viewmodel.MainViewModel" />
+    </data>
+
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/mainContainer"
         android:layout_width="match_parent"
@@ -25,13 +32,14 @@
 
         <include
             android:id="@+id/largePlayer"
-            layout="@layout/activity_player"
+            layout="@layout/layout_player"
             android:layout_width="match_parent"
             android:layout_height="73dp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:viewmodel="@{viewmodel}" />
 
         <LinearLayout
             android:id="@+id/smallPlayer"

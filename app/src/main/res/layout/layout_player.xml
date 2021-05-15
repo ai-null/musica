@@ -3,11 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.github.ainul.musica.ui.viewmodel.MainViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/secondaryColor"
-        android:theme="@style/ThemeOverlay.MaterialComponents.Dark">
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
+        tools:context=".ui.activity.MainActivity">
 
         <ImageButton
             android:id="@+id/btnMinimize"
@@ -52,10 +60,11 @@
 
             <ImageView
                 android:id="@+id/cover"
+                albumArt="@{viewmodel.currentMusic.path}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/secondaryLightColor"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cover"
                 tools:ignore="contentDescription" />
         </androidx.cardview.widget.CardView>
 
@@ -64,21 +73,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/large_margin"
-            android:layout_marginTop="@dimen/large_margin"
+            android:layout_marginTop="@dimen/medium_margin"
             android:layout_marginEnd="@dimen/large_margin"
             android:ellipsize="marquee"
+            android:gravity="center"
             android:singleLine="true"
-            android:text="@string/sample_music_title"
+            android:text="@{viewmodel.currentMusic.name}"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/coverContainer" />
 
         <TextView
             android:id="@+id/album"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_marginLeft="@dimen/medium_margin"
             android:layout_marginTop="@dimen/margin"
-            android:text="@string/sample_album"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@{viewmodel.currentMusic.artist}"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/title"
             app:layout_constraintStart_toStartOf="@id/title"
@@ -89,10 +106,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
-            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/large_margin"
             android:layout_marginEnd="@dimen/medium_margin"
-            android:thumbTint="@color/primaryColor"
             android:progressTint="@color/primaryColor"
+            android:thumbTint="@color/primaryColor"
             app:layout_constraintTop_toBottomOf="@id/album" />
 
         <LinearLayout

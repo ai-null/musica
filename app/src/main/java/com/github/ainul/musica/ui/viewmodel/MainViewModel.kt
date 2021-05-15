@@ -1,15 +1,12 @@
 package com.github.ainul.musica.ui.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import com.github.ainul.musica.model.AudioModel
 import com.github.ainul.musica.util.AudioUtil
 import kotlinx.coroutines.*
 
-class MainViewModel(private val app: Application) : ViewModel() {
+class MainViewModel(private val app: Application) : AndroidViewModel(app) {
     // uiScope to manage UI-thread
     private val uiScope = CoroutineScope(Dispatchers.Main + Job())
     // contain list of audio files from devices
@@ -37,14 +34,14 @@ class MainViewModel(private val app: Application) : ViewModel() {
         _currentMusic.value = data
     }
 
-    class Factory(private val app: Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return MainViewModel(app) as T
-            }
-
-            throw ClassCastException("Unable to construct viewmodel")
-        }
-    }
+//    class Factory(private val app: Application) : ViewModelProvider.Factory {
+//        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+//            if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+//                @Suppress("UNCHECKED_CAST")
+//                return MainViewModel(app) as T
+//            }
+//
+//            throw ClassCastException("Unable to construct viewmodel")
+//        }
+//    }
 }

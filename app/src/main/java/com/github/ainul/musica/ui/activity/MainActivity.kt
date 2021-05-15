@@ -12,24 +12,24 @@ import com.github.ainul.musica.ui.viewmodel.MainViewModel
 class MainActivity : AppCompatActivity() {
     // define dataBinding and viewmodel
     private lateinit var binding: ActivityMainBinding
-    private val model: MainViewModel by lazy {
-        ViewModelProvider(this,
-            MainViewModel.Factory(this.application)).get(MainViewModel::class.java)
+    private val viewmodel: MainViewModel by lazy {
+        ViewModelProvider(this).get(MainViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
+        binding.viewmodel = viewmodel
+
+        updateLiveData()
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        model.currentMusic.observe(this, {
+    private fun updateLiveData() {
+        viewmodel.currentMusic.observe(this, {
             it?.let {
-                Toast.makeText(this, "$it", Toast.LENGTH_SHORT).show()
-                // TODO: start motion animation programmatically
+                Toast.makeText(this, it.path, Toast.LENGTH_SHORT).show()
+                binding.mainContainer.transitionToEnd()
             }
         })
     }
