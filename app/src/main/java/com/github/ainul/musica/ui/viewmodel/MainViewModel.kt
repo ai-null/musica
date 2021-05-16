@@ -1,14 +1,18 @@
 package com.github.ainul.musica.ui.viewmodel
 
 import android.app.Application
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.lifecycle.*
 import com.github.ainul.musica.model.AudioModel
 import com.github.ainul.musica.util.AudioUtil
 import kotlinx.coroutines.*
+import java.io.File
 
 class MainViewModel(private val app: Application) : AndroidViewModel(app) {
     // uiScope to manage UI-thread
     private val uiScope = CoroutineScope(Dispatchers.Main + Job())
+
     // contain list of audio files from devices
     private val _listAudio = MutableLiveData<List<AudioModel>>()
     val listAudio: LiveData<List<AudioModel>> get() = _listAudio
@@ -32,6 +36,27 @@ class MainViewModel(private val app: Application) : AndroidViewModel(app) {
     val currentMusic: LiveData<AudioModel?> get() = _currentMusic
     fun onItemClicked(data: AudioModel) {
         _currentMusic.value = data
+    }
+
+    private var isPlaying = false
+    fun onPlayPauseClick() {
+        val path: Uri = Uri.fromFile(File(_currentMusic.value!!.path))
+        var mediaPlayer: MediaPlayer? = null
+
+        if (mediaPlayer !== null) {
+            isPlaying = if (isPlaying) {
+                mediaPlayer.stop()
+                mediaPlayer.release()
+                false
+            } else {
+                mediaPlayer.start()
+                true
+            }
+        } else {
+            mediaPlayer = MediaPlayer.create(app.applicationContext, path)
+            mediaPlayer.start()
+            isPlaying = true
+        }
     }
 
 //    class Factory(private val app: Application) : ViewModelProvider.Factory {

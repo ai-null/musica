@@ -29,7 +29,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/nav_graph" />
 
-
         <include
             android:id="@+id/largePlayer"
             layout="@layout/layout_player"
@@ -45,8 +44,8 @@
             android:id="@+id/smallPlayer"
             android:layout_width="match_parent"
             android:layout_height="73dp"
-            android:background="@drawable/background_border_top"
             android:gravity="center"
+            android:background="@color/secondaryLightColor"
             android:orientation="horizontal"
             android:padding="@dimen/medium_margin"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -63,24 +62,26 @@
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:text="@string/sample_music_title"
+                android:text="@{viewmodel.currentMusic.name}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
             <ImageView
+                android:id="@+id/playPauseBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_ripple_background"
-                android:padding="4dp"
+                android:padding="@dimen/margin"
                 android:src="@drawable/ic_baseline_play_arrow_24"
                 tools:ignore="ContentDescription" />
 
             <ImageView
+                android:id="@+id/exitPlayerBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_ripple_background"
-                android:padding="4dp"
+                android:padding="@dimen/margin"
                 android:src="@drawable/ic_baseline_close_24"
                 tools:ignore="ContentDescription" />
         </LinearLayout>

@@ -2,14 +2,20 @@
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
+<!--    <Transition-->
+<!--        motion:constraintSetEnd="@id/start"-->
+<!--        motion:constraintSetStart="@id/preStart"-->
+<!--        motion:duration="300"-->
+<!--        motion:motionInterpolator="easeOut" />-->
+
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
         motion:duration="300"
         motion:motionInterpolator="easeOut">
         <OnSwipe
-            motion:maxAcceleration="25"
             motion:dragScale="0.2"
+            motion:maxAcceleration="25"
             motion:touchRegionId="@id/largePlayer" />
         <KeyFrameSet>
             <KeyAttribute
@@ -24,6 +30,12 @@
     </Transition>
 
     <ConstraintSet android:id="@+id/start" />
+
+<!--    <ConstraintSet android:id="@+id/preStart">-->
+<!--        <Constraint-->
+<!--            android:id="@id/smallPlayer"-->
+<!--            motion:layout_constraintTop_toBottomOf="parent" />-->
+<!--    </ConstraintSet>-->
 
     <ConstraintSet android:id="@+id/end">
         <Constraint

@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding.viewmodel = viewmodel
 
         updateLiveData()
+        componentListener()
     }
 
     private fun updateLiveData() {
@@ -32,5 +33,9 @@ class MainActivity : AppCompatActivity() {
                 binding.mainContainer.transitionToEnd()
             }
         })
+    }
+
+    private fun componentListener() {
+        // TODO: Add some play listener
     }
 }

@@ -32,7 +32,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:background="@color/secondaryLightColor"
-                android:src="@drawable/ic_baseline_disc_24"
+                android:src="@drawable/ic_disc"
                 albumArt="@{model.path}"
                 tools:ignore="contentDescription" />
         </androidx.cardview.widget.CardView>
