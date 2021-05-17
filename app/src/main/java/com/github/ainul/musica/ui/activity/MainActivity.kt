@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
     private fun updateLiveData() {
         viewmodel.currentMusic.observe(this, {
             it?.let {
-                Toast.makeText(this, it.path, Toast.LENGTH_SHORT).show()
                 binding.mainContainer.transitionToEnd()
             }
         })

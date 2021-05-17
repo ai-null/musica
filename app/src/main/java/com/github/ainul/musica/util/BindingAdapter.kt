@@ -16,6 +16,7 @@ import com.github.ainul.musica.R
 @BindingAdapter("albumArt")
 fun ImageView.albumArt(path: String?) {
     val retriever = MediaMetadataRetriever()
+    val glide = Glide.with(this)
 
     // get the meta data from music's path
     try {
@@ -29,9 +30,7 @@ fun ImageView.albumArt(path: String?) {
     val art: ByteArray? = retriever.embeddedPicture
     retriever.release()
 
-    if (art !== null) {
-        Glide.with(this).asBitmap().load(art).into(this)
-    } else {
-        Glide.with(this).load(R.drawable.ic_disc).into(this)
-    }
+    // set embedded picture
+    if (art !== null) glide.asBitmap().load(art).into(this)
+    else glide.load(R.drawable.background_cover).into(this)
 }

@@ -62,6 +62,7 @@
                 android:id="@+id/cover"
                 albumArt="@{viewmodel.currentMusic.path}"
                 android:layout_width="match_parent"
+                android:src="@drawable/background_cover"
                 android:layout_height="match_parent"
                 android:background="@color/secondaryLightColor"
                 android:scaleType="centerCrop"
@@ -127,10 +128,10 @@
 
             <ImageButton
                 android:id="@+id/shuffle"
-                style="@style/actionButton"
+                style="@style/actionButton.small"
                 android:layout_marginEnd="@dimen/medium_margin"
                 android:layout_marginRight="@dimen/medium_margin"
-                android:src="@drawable/ic_baseline_shuffle_24"
+                android:src="@drawable/ic_switch_3"
                 tools:ignore="ContentDescription" />
 
             <ImageButton
@@ -163,10 +164,10 @@
 
             <ImageButton
                 android:id="@+id/repeat"
-                style="@style/actionButton"
+                style="@style/actionButton.small"
                 android:layout_marginStart="@dimen/medium_margin"
                 android:layout_marginLeft="@dimen/medium_margin"
-                android:src="@drawable/ic_baseline_repeat_24"
+                android:src="@drawable/ic_repeat"
                 tools:ignore="ContentDescription" />
         </LinearLayout>
 

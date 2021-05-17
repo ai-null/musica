@@ -1,13 +1,11 @@
 package com.github.ainul.musica.ui.viewmodel
 
 import android.app.Application
-import android.media.MediaPlayer
-import android.net.Uri
 import androidx.lifecycle.*
 import com.github.ainul.musica.model.AudioModel
 import com.github.ainul.musica.util.AudioUtil
+import com.github.ainul.musica.util.PlayerUtil
 import kotlinx.coroutines.*
-import java.io.File
 
 class MainViewModel(private val app: Application) : AndroidViewModel(app) {
     // uiScope to manage UI-thread
@@ -38,35 +36,16 @@ class MainViewModel(private val app: Application) : AndroidViewModel(app) {
         _currentMusic.value = data
     }
 
-    private var isPlaying = false
-    fun onPlayPauseClick() {
-        val path: Uri = Uri.fromFile(File(_currentMusic.value!!.path))
-        var mediaPlayer: MediaPlayer? = null
-
-        if (mediaPlayer !== null) {
-            isPlaying = if (isPlaying) {
-                mediaPlayer.stop()
-                mediaPlayer.release()
-                false
-            } else {
-                mediaPlayer.start()
-                true
-            }
-        } else {
-            mediaPlayer = MediaPlayer.create(app.applicationContext, path)
-            mediaPlayer.start()
-            isPlaying = true
-        }
+    private val playerUtil: PlayerUtil by lazy {
+        PlayerUtil(app.applicationContext, _currentMusic.value!!.path)
     }
 
-//    class Factory(private val app: Application) : ViewModelProvider.Factory {
-//        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-//            if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-//                @Suppress("UNCHECKED_CAST")
-//                return MainViewModel(app) as T
-//            }
-//
-//            throw ClassCastException("Unable to construct viewmodel")
-//        }
-//    }
+    fun onPlayPauseClick() {
+        playerUtil.play()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        playerUtil.destroy()
+    }
 }
